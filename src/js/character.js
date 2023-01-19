@@ -30,9 +30,8 @@ export default class Character {
 
   damage(points) {
     if (this.health < 1) {
-        throw new Error('Персонаж умер, нельзя повысить уровень')
+      throw new Error('Персонаж умер, нельзя повысить уровень');
     }
     this.health -= points * (1 - this.deffence / 100);
   }
 }
-

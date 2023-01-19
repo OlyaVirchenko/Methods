@@ -8,8 +8,8 @@ test('Проверка метода levelUp', () => {
     type: 'Undead',
     health: 100,
     level: 2,
-    attack: 48,
-    deffence: 12,
+    attack: 30,
+    deffence: 30,
   });
 });
 
