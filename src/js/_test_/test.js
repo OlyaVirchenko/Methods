@@ -78,18 +78,32 @@ test('Проверка героя Daemon', () => {
   });
 });
 
-const heroeProperty = [
-  ['имя не строка', 'Ошибка! Имя должно быть строкой', 123, 'Bowman'],
-  ['1 символ', 'Ошибка! Имя слишком ороткое/длинное', 'B', 'Bowman'],
-  ['больше 10 символов', 'Ошибка! Имя слишком ороткое/длинное', 'Buuuuumbooom', 'Bowman'],
-  ['несуществующий тип', 'Ошибка! Такого персонажа не существует', 'Bombom', 'Dubina'],
-];
+test('Проверка является ли имя строкой', () => {
+  expect(() => {
+    const result = new Undead(12356);
+    result.name = 12356;
+  }).toThrow('Ошибка! Имя должно быть строкой');
+});
 
-const heroes = test.each(heroeProperty);
+test('Проверка слишком маленькой длины имени', () => {
+  expect(() => {
+    const result = new Undead('B');
+    result.name = 'B';
+  }).toThrow('Ошибка! Имя слишком короткое/длинное');
+});
 
-heroes('testing heroes errors with %s __', (__, expected, heroeName, heroeType) => {
-  const result = new Character(heroeName, heroeType);
-  expect(result).toBe(expected);
+test('Проверка слишком большой длины имени', () => {
+  expect(() => {
+    const result = new Undead('Bombombombombom');
+    result.name = 'Bombombombombom';
+  }).toThrow('Ошибка! Имя слишком короткое/длинное');
+});
+
+test('Проверка существования типа героя', () => {
+  expect(() => {
+    const result = new Character('Bombom');
+    result.type = 'Undeady';
+  }).toThrow('Ошибка! Такого персонажа не существует');
 });
 
 test('Проверка метода levelUp', () => {

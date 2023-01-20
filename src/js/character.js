@@ -1,14 +1,15 @@
 export default class Character {
   constructor(name, type) {
-    if (typeof name !== 'string') {
+    const types = ['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie'];
+
+    if (typeof name === 'number') {
       throw new Error('Ошибка! Имя должно быть строкой');
     }
 
     if (name.length < 2 || name.length > 10) {
-      throw new Error('Ошибка! Имя слишком ороткое/длинное');
+      throw new Error('Ошибка! Имя слишком короткое/длинное');
     }
-    if (!['Bowman', 'Swordsman', 'Magician', 'Daemon', 'Undead', 'Zombie',
-    ].includes(type)) {
+    if (!types.includes(type)) {
       throw new Error('Ошибка! Такого персонажа не существует');
     }
 
